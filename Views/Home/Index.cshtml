@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model ideas_project.Models.RegisterViewModel
+
+
+<h1>Register:</h1>
+
+
+<form asp-controller="Home" asp-action="Register" method="post">
+    
+    <span style="color: Red;" asp-validation-for="Name"></span>
+    <br>
+    <label asp-for="Name"></label>
+    <input style="margin-left: 50px;" asp-for="Name"/>
+    <br>
+    <br>
+    <span style="color: Red;" asp-validation-for="Alias"></span>
+    <br>
+    <label asp-for="Alias"></label>
+    <input style="margin-left: 50px;" asp-for="Alias"/>
+    <br>
+    <br>
+    <span style="color: Red;" asp-validation-for="Email"></span>
+    <br>
+    <label asp-for="Email"></label>
+    <input style="margin-left: 75px;" asp-for="Email"/>
+    <br>
+    <br>
+    <span style="color: Red;" asp-validation-for="Password"></span>
+    <br>
+    <label asp-for="Password"></label>
+    <input style="margin-left: 50px;" asp-for="Password"/>
+    <br>
+    <br>
+    <span style="color: Red;" asp-validation-for="Confirm"></span>
+    <br>
+    <label asp-for="Confirm"></label>
+    <input style="margin-left: 50px;" asp-for="Confirm"/>
+    <br>
+    <br>
+    <button style="margin-left: 115px;" type="submit">Register</button>
+</form>
+
+
+@{
+    if (TempData["Error"] != null)
+    {
+<p style="color: Red;">@TempData["Error"]</p>
+    }
+}
+@{
+    if (TempData["Success"] != null)
+    {
+<p style="color: rgb(15, 131, 25);">@TempData["Success"]</p>
+    }
+}
+<h1>Login:</h1>
+
+<form action="Login" method="post">
+
+    <label for="Email">Email:</label>
+    <input style="margin-left: 75px;" name="Email" type="text"/>
+    <br>
+    <br>
+
+    <label for="Password">Password:</label>
+    <input style="margin-left: 50px;" name="Password" type="password"/>
+    <p>*Password should be at least 8 characters</p>
+
+    <button style="margin-left: 115px;" type="submit">Login</button>
+</form>

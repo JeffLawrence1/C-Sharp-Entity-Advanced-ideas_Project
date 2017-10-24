@@ -1,0 +1,32 @@
+<p style="margin-left: 650px;"><a href="/Dash">Bright Ideas</a>&emsp;<a  href="/Logout">Logout</a></p>
+
+<p><a href="/User1/@ViewBag.Idea.UserID">@ViewBag.Idea.CreatorName</a> says:</p>
+<p>@ViewBag.Idea.Description</p>
+
+<br>
+<h3>People who liked this post:</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Alias</th>
+            <th>Name</th>
+           
+        </tr>
+    </thead>
+
+        <tbody>
+@{
+    
+    foreach(var x in @ViewBag.Likes)
+    {
+        
+            <tr>
+                <td><a href="/User1/@x.UserID">@x.User.Alias</a></td>
+                <td>@x.User.Name</td>
+            </tr>
+            
+    }
+}
+        </tbody>
+</table>

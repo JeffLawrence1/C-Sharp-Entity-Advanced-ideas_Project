@@ -1,0 +1,35 @@
+<p ><a style="margin-left: 650px;" href="/Logout">Logout</a></p>
+<h2>Hi  @ViewBag.Name!</h2>
+<br>
+<br>
+@{
+    if (TempData["Error"] != null)
+    {
+<p style="color: Red;">@TempData["Error"]</p>
+    }
+}
+<form action="AddIdea" method="post">
+
+    <label for="Idea"></label>
+    <textarea style="margin-left: 50px;" placeholder="Post something witty here...." rows="2" cols="70" name="Idea"></textarea>
+    <button style="margin-left: 25px;" type="submit">Idea!</button>
+</form>
+@{
+    foreach(var x in ViewBag.Idea)
+    {
+        
+
+
+            <p><a href="/User1/@x.UserID">@x.CreatorName</a> says:</p>
+            <p>@x.Description</p>
+            <p><a href="/Like/@x.IdeaID">Like</a>&emsp;&emsp;<a href="/Status/@x.IdeaID">@x.TotalLikes people</a> like this</p>
+       
+           if(@x.UserID == @ViewBag.ID){
+                <form action="/Delete/@x.IdeaID" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+           }
+       
+
+    }
+}
